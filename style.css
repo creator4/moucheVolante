@@ -2,7 +2,7 @@
   color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #eef4f2;
-  color: #18211f;
+  color: #10201e;
 }
 
 * {
@@ -17,58 +17,43 @@ body {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.84), transparent 26rem),
-    linear-gradient(135deg, #f7fbfa 0%, #e4ece9 52%, #d9e3e5 100%);
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.78), transparent 25rem),
+    linear-gradient(135deg, #f7fbfa 0%, #e3ece9 58%, #d7e1e3 100%);
 }
 
-.shell {
-  width: min(1120px, calc(100% - 32px));
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 24px;
+  width: min(1480px, calc(100% - 36px));
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 34px 0 44px;
-}
-
-.topbar {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  min-height: 92px;
-  margin-bottom: 26px;
-}
-
-.eyebrow {
-  margin: 0 0 7px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  color: #51625f;
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(40px, 8vw, 86px);
-  line-height: 0.92;
-  letter-spacing: 0;
+  padding: 28px 0;
 }
 
 .theme-grid {
+  align-content: start;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .theme-card {
   position: relative;
   display: flex;
-  min-height: 260px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   flex-direction: column;
   justify-content: end;
-  gap: 6px;
-  padding: 18px;
+  gap: 0;
+  padding: 22px;
   border: 1px solid rgba(20, 28, 30, 0.18);
   border-radius: 8px;
   color: #10201e;
+  font-size: clamp(24px, 2.3vw, 42px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: 0;
   text-decoration: none;
   isolation: isolate;
   box-shadow: 0 18px 45px rgba(20, 28, 30, 0.10);
@@ -89,83 +74,102 @@ h1 {
   inset: 0;
   z-index: -1;
   content: "";
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(246, 250, 248, 0.88));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(246, 250, 248, 0.76));
 }
 
 .theme-card:hover,
 .theme-card:focus-visible {
-  border-color: rgba(20, 28, 30, 0.36);
-  box-shadow: 0 24px 60px rgba(20, 28, 30, 0.18);
+  border-color: rgba(20, 28, 30, 0.34);
+  box-shadow: 0 24px 62px rgba(20, 28, 30, 0.17);
   transform: translateY(-2px);
   outline: none;
 }
 
-.theme-name {
-  font-size: 26px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.theme-meta {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(16, 32, 30, 0.70);
-}
-
 .theme-sky::before {
-  background:
-    radial-gradient(circle at 26% 28%, rgba(255, 255, 255, 0.68), transparent 8rem),
-    linear-gradient(180deg, #bfe8ff 0%, #e8f7ff 100%);
+  background-image: url("assets/sky.png");
 }
 
 .theme-lake::before {
-  background:
-    linear-gradient(180deg, rgba(186, 221, 235, 0.92) 0 45%, rgba(122, 171, 167, 0.86) 46% 70%, rgba(186, 171, 126, 0.82) 71% 100%);
+  background-image: url("assets/lake.png");
 }
 
 .theme-office::before {
-  background:
-    linear-gradient(90deg, rgba(238, 242, 238, 0.92) 0 52%, rgba(191, 205, 208, 0.82) 53% 100%),
-    linear-gradient(180deg, #f5f4ef, #dfe7e7);
+  background-image: url("assets/office.png");
 }
 
 .theme-market::before {
-  background:
-    linear-gradient(180deg, rgba(199, 220, 230, 0.90) 0 30%, rgba(213, 205, 190, 0.90) 31% 66%, rgba(130, 135, 132, 0.86) 67% 100%);
+  background-image: url("assets/market.png");
 }
 
 .theme-street::before {
-  background:
-    linear-gradient(180deg, rgba(205, 219, 224, 0.92) 0 34%, rgba(172, 181, 178, 0.86) 35% 60%, rgba(104, 111, 109, 0.84) 61% 100%);
+  background-image: url("assets/street.png");
 }
 
-@media (max-width: 900px) {
-  .theme-grid {
+.font-panel {
+  align-self: start;
+  display: grid;
+  gap: 7px;
+  padding: 10px 0;
+}
+
+.font-sample {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(16, 32, 30, 0.72);
+  font-size: 20px;
+  line-height: 1.08;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.f01 { font-family: Arial, sans-serif; }
+.f02 { font-family: "Segoe UI", sans-serif; }
+.f03 { font-family: Verdana, sans-serif; }
+.f04 { font-family: Tahoma, sans-serif; }
+.f05 { font-family: Trebuchet MS, sans-serif; }
+.f06 { font-family: Georgia, serif; }
+.f07 { font-family: "Times New Roman", serif; }
+.f08 { font-family: Garamond, Georgia, serif; }
+.f09 { font-family: "Palatino Linotype", Palatino, serif; }
+.f10 { font-family: Cambria, serif; }
+.f11 { font-family: "Courier New", monospace; }
+.f12 { font-family: Consolas, monospace; }
+.f13 { font-family: "Lucida Console", monospace; }
+.f14 { font-family: Candara, sans-serif; }
+.f15 { font-family: Calibri, sans-serif; }
+.f16 { font-family: Corbel, sans-serif; }
+.f17 { font-family: Constantia, serif; }
+.f18 { font-family: "Century Gothic", sans-serif; }
+.f19 { font-family: "Franklin Gothic Medium", sans-serif; }
+.f20 { font-family: "Segoe Print", cursive; }
+
+@media (max-width: 960px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .font-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .theme-card {
-    min-height: 210px;
-  }
 }
 
-@media (max-width: 560px) {
-  .shell {
-    width: min(100% - 22px, 1120px);
-    padding-top: 22px;
-  }
-
-  .topbar {
-    min-height: 74px;
-    margin-bottom: 18px;
+@media (max-width: 620px) {
+  .page {
+    width: min(100% - 22px, 1480px);
+    padding: 16px 0;
   }
 
   .theme-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 
   .theme-card {
-    min-height: 150px;
+    padding: 16px;
+  }
+
+  .font-panel {
+    grid-template-columns: 1fr;
   }
 }
